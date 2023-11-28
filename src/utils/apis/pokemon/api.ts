@@ -1,12 +1,14 @@
-import { Response, PayloadPagination } from "@/utils/types/api";
+import axiosWithConfig from "../axiosWithConfig";
 import { Pokemon } from "./types";
 import axios from "axios";
 
-export const getPokemon = async () => {
+export const getDetailPokemon = async (id_pokemon: string) => {
   try {
-    const response = await axios.get("https://pokeapi.co/api/v2/pokemon");
+    const response = await axiosWithConfig.get(
+      `https://pokeapi.co/api/v2/pokemon/${id_pokemon}`
+    );
 
-    return response.data as Response<PayloadPagination<Pokemon[]>>;
+    return response.data;
   } catch (error: any) {
     throw Error(error.response.data.message);
   }

@@ -1,114 +1,45 @@
-import react from "react";
+import { Link } from "react-router-dom";
 import { Pokemon } from "@/utils/apis/pokemon";
 
-import Bulbasaur from "@/assets/1.svg";
-import { Separator } from "@radix-ui/react-separator";
+interface Props {
+  pokemon: any;
+  loading: boolean;
+}
+const PokemonCard = (props: Props) => {
+  const { pokemon, loading } = props;
+  // console.log(pokemon);
 
-const PokemonCard = () => {
   return (
-    <div className="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 justify-items-center text-center gap-4 py-20">
-      <div className="border-solid border-4 border-sky-500 rounded-lg border-white">
-        <img src={Bulbasaur} alt="" />
-        <Separator />
-        <p className="py-1 bg-slate-700 text-white">BULBASAUR</p>
-      </div>
-      <div className="border-solid border-4 border-sky-500 rounded-lg border-white">
-        <img src={Bulbasaur} alt="" />
-        <Separator />
-        <p className="py-1 bg-slate-700 text-white">BULBASAUR</p>
-      </div>
-      <div className="border-solid border-4 border-sky-500 rounded-lg border-white">
-        <img src={Bulbasaur} alt="" />
-        <Separator />
-        <p className="py-1 bg-slate-700 text-white">BULBASAUR</p>
-      </div>
-      <div className="border-solid border-4 border-sky-500 rounded-lg border-white">
-        <img src={Bulbasaur} alt="" />
-        <Separator />
-        <p className="py-1 bg-slate-700 text-white">BULBASAUR</p>
-      </div>
-      <div className="border-solid border-4 border-sky-500 rounded-lg border-white">
-        <img src={Bulbasaur} alt="" />
-        <Separator />
-        <p className="py-1 bg-slate-700 text-white">BULBASAUR</p>
-      </div>
-      <div className="border-solid border-4 border-sky-500 rounded-lg border-white">
-        <img src={Bulbasaur} alt="" />
-        <Separator />
-        <p className="py-1 bg-slate-700 text-white">BULBASAUR</p>
-      </div>
-      <div className="border-solid border-4 border-sky-500 rounded-lg border-white">
-        <img src={Bulbasaur} alt="" />
-        <Separator />
-        <p className="py-1 bg-slate-700 text-white">BULBASAUR</p>
-      </div>
-      <div className="border-solid border-4 border-sky-500 rounded-lg border-white">
-        <img src={Bulbasaur} alt="" />
-        <Separator />
-        <p className="py-1 bg-slate-700 text-white">BULBASAUR</p>
-      </div>
-      <div className="border-solid border-4 border-sky-500 rounded-lg border-white">
-        <img src={Bulbasaur} alt="" />
-        <Separator />
-        <p className="py-1 bg-slate-700 text-white">BULBASAUR</p>
-      </div>
-      <div className="border-solid border-4 border-sky-500 rounded-lg border-white">
-        <img src={Bulbasaur} alt="" />
-        <Separator />
-        <p className="py-1 bg-slate-700 text-white">BULBASAUR</p>
-      </div>
-      <div className="border-solid border-4 border-sky-500 rounded-lg border-white">
-        <img src={Bulbasaur} alt="" />
-        <Separator />
-        <p className="py-1 bg-slate-700 text-white">BULBASAUR</p>
-      </div>
-      <div className="border-solid border-4 border-sky-500 rounded-lg border-white">
-        <img src={Bulbasaur} alt="" />
-        <Separator />
-        <p className="py-1 bg-slate-700 text-white">BULBASAUR</p>
-      </div>
-      <div className="border-solid border-4 border-sky-500 rounded-lg border-white">
-        <img src={Bulbasaur} alt="" />
-        <Separator />
-        <p className="py-1 bg-slate-700 text-white">BULBASAUR</p>
-      </div>
-      <div className="border-solid border-4 border-sky-500 rounded-lg border-white">
-        <img src={Bulbasaur} alt="" />
-        <Separator />
-        <p className="py-1 bg-slate-700 text-white">BULBASAUR</p>
-      </div>
-      <div className="border-solid border-4 border-sky-500 rounded-lg border-white">
-        <img src={Bulbasaur} alt="" />
-        <Separator />
-        <p className="py-1 bg-slate-700 text-white">BULBASAUR</p>
-      </div>
-      <div className="border-solid border-4 border-sky-500 rounded-lg border-white">
-        <img src={Bulbasaur} alt="" />
-        <Separator />
-        <p className="py-1 bg-slate-700 text-white">BULBASAUR</p>
-      </div>
-      <div className="border-solid border-4 border-sky-500 rounded-lg border-white">
-        <img src={Bulbasaur} alt="" />
-        <Separator />
-        <p className="py-1 bg-slate-700 text-white">BULBASAUR</p>
-      </div>
-      <div className="border-solid border-4 border-sky-500 rounded-lg border-white">
-        <img src={Bulbasaur} alt="" />
-        <Separator />
-        <p className="py-1 bg-slate-700 text-white">BULBASAUR</p>
-      </div>
-      <div className="border-solid border-4 border-sky-500 rounded-lg border-white">
-        <img src={Bulbasaur} alt="" />
-        <Separator />
-        <p className="py-1 bg-slate-700 text-white">BULBASAUR</p>
-      </div>
-      <div className="border-solid border-4 border-sky-500 rounded-lg border-white">
-        <img src={Bulbasaur} alt="" />
-        <Separator />
-        <p className="py-1 bg-slate-700 text-white">BULBASAUR</p>
-      </div>
-    </div>
+    <>
+      {loading ? (
+        <h1>Loading...</h1>
+      ) : (
+        pokemon.map((item: any, index: any) => {
+          return (
+            <Link
+              className="lg:w-[30rem] lg:h-[15rem] border-4 rounded-lg justify-items-center text-center gap-4 bg-slate-700"
+              key={index}
+              to={"/detail"}
+            >
+              <img
+                src={item.sprites.front_default}
+                alt=""
+                className="w-[13rem] h-[12.5rem] mx-auto"
+              />
+              <p className="text-white font-bold py-1 bg-slate-800 rounded-sm">
+                {item.name.toUpperCase()}
+              </p>
+            </Link>
+          );
+        })
+      )}
+    </>
   );
 };
 
 export default PokemonCard;
+
+// <div className="w-[25rem] border-4 rounded-lg justify-items-center text-center gap-4 py-20 bg-slate-500">
+//   <p className="text-white font-black">{data.name.toUpperCase()}</p>
+
+// </div>
